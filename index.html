@@ -35,7 +35,7 @@
                         <input id="nombre" type="text" class="form-control">
                         <button id="agregar" class="btn btn-success btn-sm" type="button">AGREGAR</button>
                         <button id="vaciar" class="btn btn-danger btn-sm" type="button">BORRAR TODO</button>
-                        <button id="borrarUltimo" class="btn btn-warning btn-sm">BORRAR ULTIMO</button>
+                        <!-- <button id="borrarUltimo" class="btn btn-warning btn-sm">BORRAR ULTIMO</button> -->
                        
                     </div>
                 </div>
@@ -106,12 +106,12 @@
                 //se ejecuta el innerhtml pero con el valor del array declarado en vaciar.
                 mostrar();
             }
-            function borrarUltimo(){
-                //borrado de ultimo con el método .pop() que funciona con el array ya declarado.
-                nombres.pop();
-                //muestreo de la actualización.
-                mostrar();
-            }
+            // function borrarUltimo(){
+            //     //borrado de ultimo con el método .pop() que funciona con el array ya declarado.
+            //     nombres.pop();
+            //     //muestreo de la actualización.
+            //     mostrar();
+            // }
             function eliminar(id){
                 //console.log(nombres);
                 nombres.splice(id, 1);
