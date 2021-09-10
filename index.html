@@ -131,7 +131,15 @@
                 // elige un elemento del array al azar declarando una variable {random} 
                 // con el metodo Math.random devuelto por el 
                 // Math.floor que devuelve el máximo entero menor o igual a un número.
-                let random = Math.floor(Math.random() * nombres.length);
+                // let random = Math.floor(Math.random() * nombres.length);
+                let random,matesDeRandom,diferenciador;
+                for (random = nombres.length; random; random--) {
+                    matesDeRandom = Math.floor(Math.random() * random);
+                    diferenciador = nombres[random - 1];
+                    nombres[random - 1] = nombres[matesDeRandom];
+                    nombres[matesDeRandom] = diferenciador;
+                    
+                }
                 if (nombres.length !== 0 ){
                     document.querySelector('#result').innerHTML = `<li class="list-group-item pb-3 text-capitalize text-center bg-success p-2 text-white bg-opacity-75 result">` + nombres[random] +`</li>` ;
                 }
