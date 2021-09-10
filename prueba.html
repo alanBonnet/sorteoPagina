@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
+    crossorigin="anonymous">
+</head>
+<body>
+    <div class="container p-5" id="app">
+        <div class="form-group">
+            <input v-model="mensaje" @keyup.enter="Add" type="text" class="form-control">
+        </div>
+        <div v-for="(registro, index) in registros" class="alert alert-info">
+            {{registro.mensaje}}
+            <button @click="Delete(index)" class="btn">&times;</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script>
+
+        let app = new Vue({
+            el: "#app",
+            data: {
+                mensaje: "",
+                registros: []
+            },
+            methods: {
+                Add(){
+                    this.registros.push({
+                        mensaje: this.mensaje
+                    });
+                    this.mensaje = "";
+                },
+                Delete(id){
+                    this.registros.splice(id, 1);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
