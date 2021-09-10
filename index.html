@@ -63,8 +63,8 @@
     
         let enterInput= document.querySelector('#nombre');
         enterInput.addEventListener('keyup', function(event){
-            //console.log(event.which);
-            let texto = document.querySelector("#nombre");
+            //console.log(event.which); sirve para mostrar por consola qué tecla se escucha
+            let texto = document.querySelector("#nombre"); // se elige el input de id nombre y luego un if que acciona f.agregar() al apretarse enter
             if(event.which === 13) agregar();   
         })
         document.querySelector('#agregar').addEventListener("click", agregar);
@@ -92,7 +92,7 @@
                 let lista = document.querySelector('.listado');
                     //con lista.innetHTML vacía la lista del contenido de que tenga el elemento de class lista.
                 lista.innerHTML = "";
-                    // for para que se agregue elementos a la lista desordenada.
+                    // for para que se agregue elementos a la lista desordenada. (for clasico que permite saber el id cada elemento del array)
                 for (let i = 0; i < nombres.length; i++){
                     lista.innerHTML += `<li class="list-group-item pb-3 text-capitalize">` + nombres[i] +`<button onclick="eliminar(${i})" class="btn btn-sm btn-danger position-absolute end-0">&times;</button></li>`;
                 }
