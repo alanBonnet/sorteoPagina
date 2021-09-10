@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,12 +9,11 @@
     rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
     crossorigin="anonymous">
     <style>
-        #sortear {
-            padding-left: 45%;
-            padding-right: 38.9%;
-        }
         .listado{
             background-color: white;
+        }
+        .end-2{
+            right: 2% !important;
         }
         body{
             background-image: url(./michusa.png);
@@ -32,32 +31,38 @@
     </style>
 </head>
 <body>
-        <div class="position-relative">
-            <div class="position-absolute top-0 end-50">
-
-                <div class="container">
-                    <h2 class="fst-italic">
-                        Ingrese los nombres de: 
-                        <br>
-                        Los temas o personas para SORTEAR
-                    </h2>
-                    <div class=" input-group mb-3">
-                        <input id="nombre" type="text" class="form-control">
-                        <button id="agregar" class="btn btn-success btn-sm" type="button">AGREGAR</button>
-                        <button id="vaciar" class="btn btn-danger btn-sm" type="button">BORRAR TODO</button>
-                        <!-- <button id="borrarUltimo" class="btn btn-warning btn-sm">BORRAR ULTIMO</button> -->
-                       
-                    </div>
-                </div>
-                <div class="container">
-                    <button id="sortear" class="btn btn-lg btn-info mb-2">SORTEAR</button>
-                    <ul class="listado list-group">
-        
-                    </ul>
-                    <div class=" text-capitalize">
-                        <ul id="result"class="listado list-group">
-                            
-                        </ul>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-sm-12 col-xs-6 align-self-start">
+                    <div class="position-relative">
+                        <div class="card bg-warning  mt-3 pb-2  border-success">
+            
+                            <div class="container">
+                                <h2 class="fst-italic">
+                                    Ingrese los nombres de: 
+                                    <br>
+                                    Los temas o personas para SORTEAR
+                                </h2>
+                                <div class=" input-group mb-3">
+                                    <input id="nombre" type="text" class="form-control" placeholder="Escriba Aquí">
+                                    <button id="agregar" class="btn btn-success btn-sm" type="button">AGREGAR</button>
+                                    <button id="vaciar" class="btn btn-danger btn-sm" type="button">BORRAR TODO</button>
+                                    <!-- <button id="borrarUltimo" class="btn btn-warning btn-sm">BORRAR ULTIMO</button> -->
+                                
+                                </div>
+                            </div>
+                            <div class="container d-grid gap-1">
+                                <button id="sortear" class="btn btn-lg btn-info mb-2">SORTEAR</button>
+                                <ul class="listado list-group">
+                    
+                                </ul>
+                                <div class=" text-capitalize">
+                                    <ul id="result"class="listado list-group">
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,7 +109,7 @@
                 lista.innerHTML = "";
                     // for para que se agregue elementos a la lista desordenada. (for clasico que permite saber el id cada elemento del array)
                 for (let i = 0; i < nombres.length; i++){
-                    lista.innerHTML += `<li class="list-group-item pb-3 text-capitalize">` + nombres[i] +`<button onclick="eliminar(${i})" class="btn btn-sm btn-danger position-absolute end-0">&times;</button></li>`;
+                    lista.innerHTML += `<li class="list-group-item pb-3 text-capitalize">` + nombres[i] +`<button onclick="eliminar(${i})" class="btn btn-sm btn-danger position-absolute end-2">&times;</button></li>`;
                 }
             
             }
