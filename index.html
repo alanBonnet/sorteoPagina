@@ -23,6 +23,12 @@
             background-position-y: 20vh;
             background-color:#a35825 !important;
         }
+        @media (max-width:1066px) {
+            body{
+                background-position-x:2vw;
+                background-position-y: 35vh;
+            }
+        }
     </style>
 </head>
 <body>
@@ -77,10 +83,10 @@
         //document.querySelector('#borrarUltimo').addEventListener("click", borrarUltimo);
         document.querySelector('#sortear').addEventListener("click", sortear);
             let nombres = [];
+            let input = document.querySelector('#nombre');
             //function para agregar.
             function agregar(){
                 console.log("se ejecutó el agregado")
-                let input = document.querySelector('#nombre')
                 let nombre = input.value;
                 // agregado de element al array.
                 if(input.value !== ""){
@@ -126,7 +132,9 @@
                 // con el metodo Math.random devuelto por el 
                 // Math.floor que devuelve el máximo entero menor o igual a un número.
                 let random = Math.floor(Math.random() * nombres.length);
-                document.querySelector('#result').innerHTML = `<li class="list-group-item pb-3 text-capitalize text-center bg-success p-2 text-white bg-opacity-75 result">` + nombres[random] +`</li>` ;
+                if (nombres.length !== 0 ){
+                    document.querySelector('#result').innerHTML = `<li class="list-group-item pb-3 text-capitalize text-center bg-success p-2 text-white bg-opacity-75 result">` + nombres[random] +`</li>` ;
+                }
             }
     </script>
       
