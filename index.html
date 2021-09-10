@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteado</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" 
+    crossorigin="anonymous">
+    <style>
+        #sortear {
+            padding-left: 45%;
+            padding-right: 38.9%;
+        }
+        .listado{
+            background-color: white;
+        }
+        body{
+            background-color:#b667f1 !important;
+        }
+    </style>
+</head>
+<body>
+        <div class="position-relative">
+            <div class="position-absolute top-0 end-50">
+
+                <div class="container">
+                    <h2 class="fst-italic">
+                        Ingrese los nombres de: 
+                        <br>
+                        Los temas o personas para SORTEAR
+                    </h2>
+                    <div class=" input-group mb-3">
+                        <input id="nombre" type="text" class="form-control">
+                        <button id="agregar" class="btn btn-success btn-sm" type="button">AGREGAR</button>
+                        <button id="vaciar" class="btn btn-danger btn-sm" type="button">BORRAR TODO</button>
+                        <button id="borrarUltimo" class="btn btn-warning btn-sm">BORRAR ULTIMO</button>
+                       
+                    </div>
+                </div>
+                <div class="container">
+                    <button id="sortear" class="btn btn-lg btn-info mb-2">SORTEAR</button>
+                    <ul class="listado list-group">
+        
+                    </ul>
+                    <div class=" text-capitalize">
+                        <ul id="result"class="listado list-group">
+                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    <script>
+        //lectura y agregado de eventos segun ID.
+        
+
+    
+        let enterInput= document.querySelector('#nombre');
+        enterInput.addEventListener('keyup', function(event){
+            //console.log(event.which);
+            let texto = document.querySelector("#nombre");
+            if(event.which === 13) agregar();   
+        })
+        document.querySelector('#agregar').addEventListener("click", agregar);
+        
+        document.querySelector('#vaciar').addEventListener("click", vaciar);
+        document.querySelector('#borrarUltimo').addEventListener("click", borrarUltimo);
+        document.querySelector('#sortear').addEventListener("click", sortear);
+            let nombres = [];
+            //function para agregar.
+            function agregar(){
+                console.log("se ejecutó el agregado")
+                let input = document.querySelector('#nombre')
+                let nombre = input.value;
+                // agregado de element al array.
+                if(input.value !== ""){
+                    nombres.push(nombre);
+                    // muestreo del array.
+                    mostrar();
+                    // vaciar input.
+                    document.querySelector('#nombre').value = "";
+                }
+            }
+            // function para mostrar.
+            function mostrar(){
+                let lista = document.querySelector('.listado');
+                    //con lista.innetHTML vacía la lista del contenido de que tenga el elemento de class lista.
+                lista.innerHTML = "";
+                    // for para que se agregue elementos a la lista desordenada.
+                for (let i = 0; i < nombres.length; i++){
+                    lista.innerHTML += `<li class="list-group-item pb-3 text-capitalize">` + nombres[i] +`<button onclick="eliminar(${i})" class="btn btn-sm btn-danger position-absolute end-0">&times;</button></li>`;
+                }
+            
+            }
+            function vaciar(){
+                // vaciado al array.
+                nombres = [];
+                let resultado = document.querySelector('#result');
+                resultado.innerHTML = "";
+                //se ejecuta el innerhtml pero con el valor del array declarado en vaciar.
+                mostrar();
+            }
+            function borrarUltimo(){
+                //borrado de ultimo con el método .pop() que funciona con el array ya declarado.
+                nombres.pop();
+                //muestreo de la actualización.
+                mostrar();
+            }
+            function eliminar(id){
+                //console.log(nombres);
+                nombres.splice(id, 1);
+                mostrar();
+            }
+            function sortear(){
+                // elige un elemento del array al azar declarando una variable {random} 
+                // con el metodo Math.random devuelto por el 
+                // Math.floor que devuelve el máximo entero menor o igual a un número.
+                let random = Math.floor(Math.random() * nombres.length);
+                document.querySelector('#result').innerHTML = `<li class="list-group-item pb-3 text-capitalize text-center bg-success p-2 text-white bg-opacity-75 result">` + nombres[random] +`</li>` ;
+            }
+    </script>
+      
+</body>
+</html>
