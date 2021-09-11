@@ -105,7 +105,7 @@
                 lista.innerHTML = "";
                     // for para que se agregue elementos a la lista desordenada. (for clasico que permite saber el id cada elemento del array)
                 for (let i = 0; i < nombres.length; i++){
-                    lista.innerHTML += `<li class="list-group-item pb-3 text-capitalize">` + nombres[i] +`<button onclick="eliminar(${i})" class="btn btn-sm btn-danger position-absolute end-2">&times;</button></li>`;
+                    lista.innerHTML += `<li class="list-group-item pb-3 text-capitalize aSortear-${i}">` + nombres[i] +`<button onclick="eliminar(${i})" class="btn btn-sm btn-danger position-absolute end-2">&times;</button></li>`;
                 }
             
             }
@@ -139,11 +139,12 @@
                     diferenciador = nombres[random - 1];
                     nombres[random - 1] = nombres[matesDeRandom];
                     nombres[matesDeRandom] = diferenciador;
-                    
                 }
                 if (nombres.length !== 0 ){
                     document.querySelector('#result').innerHTML = `<li class="list-group-item pb-3 text-capitalize text-center bg-success p-2 text-white bg-opacity-75 result">` + nombres[random] +`</li>` ;
                 }
+                nombres.splice(random,1);
+                mostrar();
             }
     </script>
       
